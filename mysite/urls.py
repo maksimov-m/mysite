@@ -15,9 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def main(request):
+    return HttpResponse("""
+    <h1>Добро пожаловать</h1>
+    <h2>Доступные ссылки</h2>
+    <p>news/</p>
+    <p>news/test</p>
+    """)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', main),
     path('news/', include('news.urls')),
 
 ]
+
